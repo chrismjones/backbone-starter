@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	
+	<script src="/assets/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+	<div id="header-region"></div>
+	<div id="main-region" class="container"></div>
+	
+	
+	<!-- 
+		TEMPLATES
+		- You probably want to not have your templates here, but it's late and 
+		  I don't know where you want your templates. More importantly, at the 
+		  moment I am not sure where I want these templates, so they are here.
+	-->
+	<!-- called from /assets/js/common/views.js -->
+	<script type="text/template" id="loading-view">
+		<h1>Loading!</h1>
+		<p>Loading... loading... loading...</p>
+	</script>
+	
+	<!-- called from /assets/js/common/views.js -->
+	<script type="text/template" id="paginated-view">
+		<div class="js-pagination-main"></div>
+		<div class="js-pagination-controls"></div>
+	</script>
+	<script type="text/template" id="pagination-controls">
+		<% if(totalPages > 1){ %>
+			<ul class="pagination">
+				<% if(currentPage > 1){ %>
+					<li><a href="<%- urlBase + 1 %>" class="navigatable" data-page="1">&laquo;</a></li>
+					<li><a href="<%- urlBase + previous %>" class="navigatable" data-page="<%- previous %>">&lsaquo;</a></li>
+				<% }else{ %>
+					<li class="disabled"><a href="#">&laquo;</a></li>
+					<li class="disabled"><a href="#">&lsaquo;</a></li>
+				<% } %>
+		
+				<% if(pageSet[0] > 1 ){ %>
+					<li class="disabled"><a href="#">...</a></li>
+				<% } %>
+				
+				<% _.each(pageSet, function(page){ %>
+					<% if(page === currentPage){ %>
+						<li class="active diabled"><a href="#"><%- page %></a></li>
+					<% }else{ %>
+						<li><a href="<%- urlBase + page %>" class="navigatable" data-page="<%- page %>"><%- page %></a></li>
+					<% } %>
+				<% }); %>
+
+				<% if(pageSet[pageSet.length - 1] !== lastPage){ %>
+					<li class="disabled"><a href="#">...</a></li>
+					<li><a href="<%- urlBase + lastPage %>" class="navigatable" data-page="<%- lastPage %>"><%- lastPage %></a></li>
+				<% } %>
+
+				<% if(currentPage !== lastPage){ %>
+					<li><a href="<%- urlBase + next %>" class="navigatable" data-page="<%- next %>">&rsaquo;</a></li>
+					<li><a href="<%- urlBase + lastPage %>" class="navigatable" data-page="<%- lastPage %>">&raquo;</a></li>
+				<% }else{ %>
+					<li class="disabled"><a href="#">&rsaquo;</a></li>
+					<li class="disabled"><a href="#">&raquo;</a></li>
+				<% } %>
+			</ul>
+		<% } %>
+	</script>
+	
+	
+	
+	
+	<!-- 
+		You'll want to concat/min some of this and add project specific files, 
+		but who knows how your build process works, so I'm just leaving this as is.
+	-->
+	<!-- Libraries -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/assets/js/libs/jquery-1.11.1.min.js"><\/script>')</script>
+	<script src="/assets/js/libs/underscore-min.js"></script>
+	<script src="/assets/js/libs/backbone-min.js"></script>
+	<script src="/assets/js/libs/backbone.paginator.js"></script>
+	<script src="/assets/js/libs/backbone.picky.min.js"></script>
+	<script src="/assets/js/libs/backbone.marionette.min.js"></script>
+	
+	<script src="/assets/js/common/utilities.js"></script>
+	
+	<!-- Site Files -->
+	<script src="/assets/js/app.js"></script>
+
+	<!-- Models / Collections -->
+	<script src="/assets/js/entities/common.js"></script>
+	
+	<script src="/assets/js/common/views.js"></scri
+	
+	
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+	<script>
+		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+		e.src='//www.google-analytics.com/analytics.js';
+		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+		ga('create','UA-XXXXX-X');ga('send','pageview');
+	</script>
+</body>
+</html>
