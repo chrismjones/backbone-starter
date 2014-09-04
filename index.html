@@ -101,6 +101,16 @@
 	<script src="/assets/js/common/views.js"></scri
 	
 	
+	<script type="text/javascript">
+		/* APP is declared in app.js */
+		APP.config = APP.config || {};
+		/* TODO: Rewrite this to pull from the querystring or a config file or something */
+		APP.config.debug = true;
+		
+		APP.start();
+	</script>
+	
+	
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
